@@ -32,20 +32,20 @@ fi
 
 backup="/etc/v2ray/233blog_v2ray_backup.conf"
 
-if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/sinmists/v2ray ]]; then
+if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/233boy/v2ray ]]; then
 
 	. $backup
 
-elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/233blog_v2ray_backup.txt && -d /etc/v2ray/sinmists/v2ray ]]; then
+elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/233blog_v2ray_backup.txt && -d /etc/v2ray/233boy/v2ray ]]; then
 
-	. /etc/v2ray/sinmists/v2ray/tools/v1xx_to_v3xx.sh
+	. /etc/v2ray/233boy/v2ray/tools/v1xx_to_v3xx.sh
 
 else
 	echo -e " 哎呀哎呀…… ${red}出错咯...请重新安装V2Ray${none} ${yellow}~(^_^) ${none}" && exit 1
 fi
 
 if [[ $mark != "v3" ]]; then
-	. /etc/v2ray/sinmists/v2ray/tools/v3.sh
+	. /etc/v2ray/233boy/v2ray/tools/v3.sh
 fi
 if [[ $v2ray_transport -ge 18 ]]; then
 	dynamicPort=true
@@ -63,7 +63,7 @@ v2ray_pid=$(pgrep -f /usr/bin/v2ray/v2ray)
 caddy_pid=$(pgrep -f /usr/local/bin/caddy)
 _v2ray_sh="/usr/local/sbin/v2ray"
 v2ray_ver="$(/usr/bin/v2ray/v2ray -version | head -n 1 | cut -d " " -f2)"
-. /etc/v2ray/sinmists/v2ray/src/init.sh
+. /etc/v2ray/233boy/v2ray/src/init.sh
 systemd=true
 # _test=true
 
@@ -2548,9 +2548,9 @@ update_v2ray.sh() {
 		echo
 		echo -e " $green 咦...发现新版本耶....正在拼命更新.......$none"
 		echo
-		cd /etc/v2ray/sinmists/v2ray
+		cd /etc/v2ray/233boy/v2ray
 		git pull
-		cp -f /etc/v2ray/sinmists/v2ray/v2ray.sh $_v2ray_sh
+		cp -f /etc/v2ray/233boy/v2ray/v2ray.sh $_v2ray_sh
 		chmod +x $_v2ray_sh
 		echo
 		echo -e "$green 更新成功啦...当前 V2Ray 管理脚本 版本: ${cyan}$latest_version$none"
